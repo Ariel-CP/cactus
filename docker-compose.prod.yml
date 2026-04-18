@@ -1,0 +1,31 @@
+services:
+  db:
+    ports: []
+    # ARM64 nativo en Raspberry Pi 4
+    platform: linux/arm64
+
+  api:
+    ports: []
+    platform: linux/arm64
+
+  frontend:
+    ports: []
+    platform: linux/arm64
+    build:
+      context: ./frontend
+      args:
+        # Ruta relativa que el browser usará para llamar a la API.
+        # Con nginx proxy en puerto 80, /api siempre resuelve correctamente.
+        VITE_API_BASE: /api
+
+  proxy:
+    image: nginx:1.27-alpine
+    container_name: cactus-proxy
+    restart: unless-stopped
+    depends_on:
+      - api
+      - frontend
+    ports:
+      - "80:80"
+    volumes:
+      - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro

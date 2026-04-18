@@ -1,0 +1,17 @@
+# Forzar LF en todo el repo (importante para scripts que corren en Linux/RPi)
+* text=auto eol=lf
+
+# Binarios — sin conversión
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.eot binary
+
+# Scripts bash: siempre LF
+*.sh text eol=lf
