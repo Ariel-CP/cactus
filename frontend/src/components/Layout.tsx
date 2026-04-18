@@ -29,6 +29,12 @@ export function Layout() {
           <Link to="/purchases">Compras</Link>
           <p className="nav-group-label">Reportes</p>
           <Link to="/reports">Reportes</Link>
+          {user?.role === "admin" && (
+            <>
+              <p className="nav-group-label">Administración</p>
+              <Link to="/admin/users">Usuarios</Link>
+            </>
+          )}
         </nav>
         <div className="sidebar-user">
           <span>{user?.full_name}</span>

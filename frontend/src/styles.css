@@ -53,9 +53,14 @@ body { background: var(--bg); }
   position: sticky;
   top: 0;
   height: 100vh;
+  overflow-y: auto;
 }
 .sidebar-brand { font-size: 1.3rem; font-weight: 700; }
-.sidebar nav { display: flex; flex-direction: column; gap: .5rem; }
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
 .sidebar nav a {
   color: rgba(255,255,255,.85);
   text-decoration: none;
@@ -80,6 +85,11 @@ body { background: var(--bg); }
   gap: .5rem;
   font-size: .85rem;
   color: rgba(255,255,255,.7);
+  padding-top: .75rem;
+  border-top: 1px solid rgba(255,255,255,.2);
+  background: linear-gradient(to bottom, rgba(31,111,139,0), rgba(31,111,139,.95) 40%);
+  position: sticky;
+  bottom: 0;
 }
 .sidebar-user button {
   background: rgba(255,255,255,.15);
@@ -124,6 +134,38 @@ tr:hover td { background: #f0f8ff; }
   font-weight: 600;
 }
 
+.badge-role-admin,
+.badge-role-operator,
+.badge-status-active,
+.badge-status-inactive {
+  display: inline-block;
+  padding: .15rem .5rem;
+  border-radius: 999px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: lowercase;
+}
+
+.badge-role-admin {
+  background: #2f80ed;
+  color: #fff;
+}
+
+.badge-role-operator {
+  background: #d9e2ec;
+  color: #243b53;
+}
+
+.badge-status-active {
+  background: #27ae60;
+  color: #fff;
+}
+
+.badge-status-inactive {
+  background: #b0b7c3;
+  color: #1f2933;
+}
+
 /* ── Forms / inputs ── */
 label {
   display: flex;
@@ -132,14 +174,16 @@ label {
   font-size: .9rem;
   font-weight: 500;
 }
-input, select {
+input, select, textarea {
   padding: .5rem .75rem;
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: .95rem;
   width: 100%;
+  font-family: inherit;
 }
-input:focus, select:focus {
+textarea { resize: vertical; min-height: 70px; }
+input:focus, select:focus, textarea:focus {
   outline: 2px solid var(--primary);
   outline-offset: 1px;
 }
@@ -187,6 +231,10 @@ button:disabled { opacity: .6; cursor: not-allowed; }
   justify-content: flex-end;
   gap: .75rem;
   padding-top: .5rem;
+  position: sticky;
+  bottom: 0;
+  background: var(--surface);
+  padding-bottom: .25rem;
 }
 .modal-actions button:first-child {
   background: var(--bg);

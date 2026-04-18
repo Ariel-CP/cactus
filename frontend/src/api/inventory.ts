@@ -1,5 +1,10 @@
-import type { Ingredient, Product } from "../types/api";
+import type { Category, Ingredient, Product } from "../types/api";
 import { http } from "./client";
+
+export async function listCategories(): Promise<Category[]> {
+  const { data } = await http.get<Category[]>("/categories");
+  return data;
+}
 
 export async function listIngredients(
   lowStock = false

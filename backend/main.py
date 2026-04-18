@@ -7,6 +7,7 @@ from app.api.routes.production import router as production_router
 from app.api.routes.purchases import router as purchases_router
 from app.api.routes.reports import router as reports_router
 from app.api.routes.sales import router as sales_router
+from app.api.routes.users import router as users_router
 from app.core.config import settings
 from app.core.database import Base, engine
 
@@ -24,6 +25,7 @@ app.include_router(production_router, prefix="/api")
 app.include_router(sales_router, prefix="/api")
 app.include_router(purchases_router, prefix="/api")
 app.include_router(reports_router, prefix="/api")
+app.include_router(users_router, prefix="/api")
 
 
 @app.on_event("startup")
